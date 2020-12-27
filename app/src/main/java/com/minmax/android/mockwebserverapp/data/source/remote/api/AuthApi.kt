@@ -4,6 +4,7 @@ import com.minmax.android.mockwebserverapp.data.source.remote.model.LoginRequest
 import com.minmax.android.mockwebserverapp.data.source.remote.model.LoginResponse
 import com.minmax.android.mockwebserverapp.data.source.remote.model.RegistrationRequest
 import com.minmax.android.mockwebserverapp.data.source.remote.model.Wrapper
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -20,4 +21,7 @@ interface AuthApi {
 
     @POST("/v1/registration")
     suspend fun registration(@Body request: RegistrationRequest):Response<Wrapper<Any>>
+
+    @POST("/v1/refreshToken")
+    fun refreshToken(@Body token:LoginResponse.Token):Call<Wrapper<LoginResponse.Token>>
 }

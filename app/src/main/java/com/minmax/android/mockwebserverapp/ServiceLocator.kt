@@ -5,4 +5,10 @@ package com.minmax.android.mockwebserverapp
  */
 object ServiceLocator {
 
+
+
+
+
+
+
 }

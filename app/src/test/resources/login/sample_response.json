@@ -8,6 +8,10 @@
       "phoneNumber": "1010101",
       "firstName": "tech",
       "lastName": "talk"
+    },
+    "token": {
+      "accessToken": "accessToken old",
+      "refreshToken": "refreshToken old"
     }
   }
 }

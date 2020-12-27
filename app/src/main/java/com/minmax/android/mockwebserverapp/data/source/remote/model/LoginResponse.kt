@@ -8,7 +8,9 @@ import com.google.gson.annotations.SerializedName
 sealed class LoginResponse {
     data class LoginData(
         @field:SerializedName("user")
-        val user:User? = null
+        val user:User? = null,
+        @field:SerializedName("token")
+        val token: Token? = null
     )
     data class User(
         var userName:String="",
@@ -16,4 +18,8 @@ sealed class LoginResponse {
         var phoneNumber:String="",
         var firstName:String="",
         var lastName:String="")
+    data class Token(
+        var accessToken:String="",
+        var refreshToken:String=""
+    )
 }
