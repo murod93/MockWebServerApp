@@ -1,0 +1,13 @@
+{
+  "msgCode": "OK",
+  "data": {
+    "user": {
+      "id": "id123",
+      "userName": "user 1",
+      "email": "example@techtalk.com",
+      "phoneNumber": "1010101",
+      "firstName": "tech",
+      "lastName": "talk"
+    }
+  }
+}

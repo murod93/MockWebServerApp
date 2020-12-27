@@ -1,0 +1,6 @@
+{
+  "userName": "string",
+  "fullName": "string",
+  "password": "string",
+  "passwordConfirmation": "string"
+}
