@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id  'dagger.hilt.android.plugin'
 }
 
 android {
@@ -30,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -43,6 +49,25 @@ dependencies {
 
 
     /**
+     * Dagger hilt dependencies
+     */
+    implementation "com.google.dagger:hilt-android:2.28-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
+
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02"
+    kapt "androidx.hilt:hilt-compiler:1.0.0-alpha02"
+
+    /**
+     * Navigation dependencies
+     */
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+
+    /**
      * add Retrofit dependencies
       */
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -53,6 +78,7 @@ dependencies {
      */
     implementation "com.squareup.okhttp3:okhttp:4.9.0"
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     /**
      * add mock web server dependencies

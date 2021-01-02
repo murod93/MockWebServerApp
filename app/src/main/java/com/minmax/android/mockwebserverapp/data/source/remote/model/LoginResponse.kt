@@ -13,7 +13,6 @@ sealed class LoginResponse {
         val token: Token? = null
     )
     data class User(
-        var userName:String="",
         var email:String="",
         var phoneNumber:String="",
         var firstName:String="",
