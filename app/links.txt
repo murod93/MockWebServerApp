@@ -3,3 +3,8 @@ https://github.com/square/okhttp/tree/master/mockwebserver
 
 // sharing code and resources for local and instrumentation testing
 https://alexzh.com/sharing-code-local-instrumentation-tests/
+
+//very good example @link https://stackoverflow.com/a/35826483/9622186
+ * https://www.raywenderlich.com/10091980-testing-rest-apis-using-mockwebserver
+ * Official github: https://github.com/square/okhttp/tree/master/mockwebserver
+ * https://speakerdeck.com/heyitsmohit/unit-testing-kotlin-channels-and-flows-android-summit?slide=47

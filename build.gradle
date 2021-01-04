@@ -33,4 +33,7 @@ ext{
     archTestingVersion = '2.1.0'
     coroutinesVersion = '1.2.1'
     junitVersion = '4.12'
+    androidXTestExtKotlinRunnerVersion = '1.1.1'
+    androidXTestCoreVersion = '1.2.0'
+
 }

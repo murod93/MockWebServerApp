@@ -6,10 +6,12 @@ import com.minmax.android.mockwebserverapp.data.source.remote.api.AuthApi
 import com.minmax.android.mockwebserverapp.data.source.remote.model.LoginRequest
 import com.minmax.android.mockwebserverapp.data.source.remote.model.RegistrationRequest
 import com.minmax.android.mockwebserverapp.domain.repository.AuthRepository
+import com.minmax.android.mockwebserverapp.rules.MainCoroutineRule
 import com.minmax.android.mockwebserverapp.rules.MockWebServerRule
 import com.minmax.android.mockwebserverapp.util.MockResponseFileReader
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
@@ -31,6 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  * https://speakerdeck.com/heyitsmohit/unit-testing-kotlin-channels-and-flows-android-summit?slide=47
  */
 @RunWith(JUnit4::class)
+@ExperimentalCoroutinesApi
 class AuthRepositoryTest {
 
     private lateinit var authRepository: AuthRepository
@@ -41,7 +44,8 @@ class AuthRepositoryTest {
     @get:Rule
     val instanceExecutorRule = InstantTaskExecutorRule()
 
-//    private val testCoroutineDispatcher = TestCoroutineDispatcher()
+    @get:Rule
+    val mainCoroutineRule = MainCoroutineRule()
 
     @Before
     fun setUp() {

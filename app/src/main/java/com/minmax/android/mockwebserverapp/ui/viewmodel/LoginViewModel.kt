@@ -47,14 +47,14 @@ class LoginViewModel @ViewModelInject constructor(private val repository: AuthRe
             _validationLiveData.value = Fields.Password(FormErrors.MISSING_VALUE)
         }
 
-        if (email!!.isNotEmpty() && !ValidationUtil.isValidEmail(email)) {
+        if (email!=null && !ValidationUtil.isValidEmail(email)) {
             _validationLiveData.value = Fields.Email(FormErrors.INVALID_EMAIL)
         }
 
-        if (_validationLiveData.value != null) {
+        if (_validationLiveData.value == null) {
             job = viewModelScope.launch(Dispatchers.IO) {
                 repository
-                    .login(LoginRequest(email, password!!))
+                    .login(LoginRequest(email!!, password!!))
                     .onStart { _showProgressLiveData.postValue(true) }
                     .collect {
                         it
