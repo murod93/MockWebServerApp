@@ -1,0 +1,5 @@
+// mock webserver
+https://github.com/square/okhttp/tree/master/mockwebserver
+
+// sharing code and resources for local and instrumentation testing
+https://alexzh.com/sharing-code-local-instrumentation-tests/

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Error"
+        android:layout_margin="@dimen/side_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Title.Black"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/description_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Error description"
+        android:textAlignment="center"
+        android:layout_margin="@dimen/side_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_view"
+        app:layout_constraintBottom_toTopOf="@id/btn_ok"
+        style="@style/Description.Black"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_ok"
+        android:text="@string/action_ok"
+        android:layout_marginBottom="@dimen/side_margin"
+        app:layout_constraintTop_toBottomOf="@id/description_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

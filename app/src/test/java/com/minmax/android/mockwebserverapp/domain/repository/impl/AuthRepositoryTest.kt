@@ -15,14 +15,12 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.RecordedRequest
 import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 
 /**
@@ -53,7 +51,7 @@ class AuthRepositoryTest {
             .build()
 
         val authApi = Retrofit.Builder()
-            .baseUrl(serverRule.server.url("/"))
+            .baseUrl(serverRule.server.url("/"))//"http://localhost:8080/"
             .addConverterFactory(GsonConverterFactory.create(Gson()))
             .client(okHttpClient)
             .build()

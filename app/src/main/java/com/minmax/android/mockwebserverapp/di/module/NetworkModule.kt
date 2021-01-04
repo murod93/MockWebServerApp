@@ -1,6 +1,5 @@
 package com.minmax.android.mockwebserverapp.di.module
 
-import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.minmax.android.mockwebserverapp.BuildConfig

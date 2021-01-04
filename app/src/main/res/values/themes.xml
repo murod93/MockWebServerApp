@@ -20,4 +20,15 @@
         <item name="cornerFamily">rounded</item>
         <item name="background">@color/transparent</item>
     </style>
+
+    <style name="Title.Black" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="Description.Black" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#CC000000</item>
+    </style>
 </resources>

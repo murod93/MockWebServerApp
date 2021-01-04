@@ -36,6 +36,18 @@ android {
     buildFeatures{
         viewBinding true
     }
+    sourceSets {
+        String sharedTestJavaDir = "src/sharedTest/java"
+        String sharedTestResourceDir = "src/sharedTest/resources"
+        androidTest {
+            java.srcDirs += [sharedTestJavaDir]
+            resources.srcDirs += [sharedTestResourceDir]
+        }
+        test {
+            java.srcDirs += [sharedTestJavaDir]
+            resources.srcDirs += [sharedTestResourceDir]
+        }
+    }
 }
 
 dependencies {
@@ -45,7 +57,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
 
     /**
@@ -87,6 +99,7 @@ dependencies {
     testImplementation("com.squareup.okhttp3:mockwebserver:4.9.0")
 
     testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
@@ -95,4 +108,24 @@ dependencies {
      */
     testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
     androidTestImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+
+    /**
+     * Testing hilt dependencies
+     */
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.28-alpha'
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.28-alpha'
+    debugImplementation "androidx.fragment:fragment-testing:1.3.0-rc01"
+
+
+    /**
+     * Espresso dependencies
+     */
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    /**
+     * Test coroutines dependencies
+     */
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 }
