@@ -41,7 +41,7 @@ class MockWebServerRule : ExternalResource() {
 
     override fun before() {
         try {
-            server.start(8080)
+            server.start()
         } catch (e: IOException) {
             throw RuntimeException(e)
         }

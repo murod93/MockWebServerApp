@@ -47,7 +47,7 @@ class LoginViewModel @ViewModelInject constructor(private val repository: AuthRe
             _validationLiveData.value = Fields.Password(FormErrors.MISSING_VALUE)
         }
 
-        if (email!=null && !ValidationUtil.isValidEmail(email)) {
+        if (!email.isNullOrEmpty() && !ValidationUtil.isValidEmail(email)) {
             _validationLiveData.value = Fields.Email(FormErrors.INVALID_EMAIL)
         }
 
