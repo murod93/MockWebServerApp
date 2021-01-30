@@ -3,6 +3,7 @@ package com.minmax.android.mockwebserverapp.util
 import android.app.Application
 import android.content.Context
 import androidx.test.runner.AndroidJUnitRunner
+import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
 
 /**

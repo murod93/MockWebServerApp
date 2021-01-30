@@ -26,34 +26,8 @@ import javax.inject.Singleton
 class TestNetworkModule {
 
     @Provides
-    @Singleton
-    fun provideMockServer (): MockWebServer {
-        var mockWebServer: MockWebServer? = null
-        val thread = Thread {
-            mockWebServer = MockWebServer()
-            mockWebServer?.start()
-        }
-        thread.start()
-        thread.join()
-        return mockWebServer ?: throw NullPointerException()
-    }
-
-    @Provides
-    @Singleton
     @Named("test_base_url")
-    fun provideBaseUrl (mockWebServer:MockWebServer): String {
-        var url = ""
-        val t = Thread {
-            url = mockWebServer.url("/").toString()
-        }
-        t.start()
-        t.join()
-        return url
-    }
-
-//    @Provides
-//    @Named("test_base_url")
-//    fun provideBaseUrl(): String = "http://localhost:8080/"
+    fun provideBaseUrl(): String = "http://127.0.0.1:8080/"
 
     @Singleton
     @Provides

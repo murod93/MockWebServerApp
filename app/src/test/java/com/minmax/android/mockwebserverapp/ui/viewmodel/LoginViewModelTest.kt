@@ -1,9 +1,7 @@
 package com.minmax.android.mockwebserverapp.ui.viewmodel
 
 import android.os.Looper.getMainLooper
-import android.os.SystemClock
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.google.common.truth.Truth.assertThat
 import com.minmax.android.mockwebserverapp.data.source.remote.api.AuthApi
 import com.minmax.android.mockwebserverapp.data.source.remote.model.Fields
@@ -18,8 +16,6 @@ import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -39,8 +35,8 @@ import javax.inject.Named
 @HiltAndroidTest
 class LoginViewModelTest{
 
-//    @get:Rule
-//    var mockWebServerRule = MockWebServerRule()
+    @get:Rule
+    var mockWebServerRule = MockWebServerRule()
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -53,9 +49,6 @@ class LoginViewModelTest{
     @Inject
     @Named("test_auth_api")
     lateinit var authApi: AuthApi
-
-    @Inject
-    lateinit var mockWebServer:MockWebServer
 
     @Before
     fun setUp() {
@@ -90,8 +83,15 @@ class LoginViewModelTest{
 
     @Test
     fun `given valid email and password when login then response true`(){
-        mockWebServer.setUpMockServerResponse(200, MockResponseFileReader("login/sample_response.json").content)
+        mockWebServerRule.server.setUpMockServerResponse(200, MockResponseFileReader("login/sample_response.json").content)
         viewModel.login("murodjon@test.com", "minmax12#")
+
+        /**
+         * java.lang.Exception: Main looper has queued unexecuted runnables. This might be the cause of the test failure.
+         * You might need a shadowOf(getMainLooper()).idle() call.
+         */
+        Thread.sleep(1000)
+        shadowOf(getMainLooper()).idle()
         val response = viewModel.loginSuccessLiveData.getOrAwaitValue()
 
         assertThat(response).isEqualTo(Unit)
@@ -99,6 +99,5 @@ class LoginViewModelTest{
 
     @After
     fun tearDown() {
-        mockWebServer.shutdown()
     }
 }
