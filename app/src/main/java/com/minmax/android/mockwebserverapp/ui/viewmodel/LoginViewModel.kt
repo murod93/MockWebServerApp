@@ -1,6 +1,7 @@
 package com.minmax.android.mockwebserverapp.ui.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
+//import kotlinx.coroutines.flow.MutableStateFlow
+//import kotlinx.coroutines.flow.StateFlow
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,18 +11,19 @@ import com.minmax.android.mockwebserverapp.data.source.remote.model.FormErrors
 import com.minmax.android.mockwebserverapp.data.source.remote.model.LoginRequest
 import com.minmax.android.mockwebserverapp.domain.repository.AuthRepository
 import com.minmax.android.mockwebserverapp.util.ValidationUtil
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-//import kotlinx.coroutines.flow.MutableStateFlow
-//import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Created by murodjon on 2021/01/02
  */
-class LoginViewModel @ViewModelInject constructor(private val repository: AuthRepository) :
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val repository: AuthRepository) :
     ViewModel() {
 
     private val _validationLiveData = MutableLiveData<Fields>()

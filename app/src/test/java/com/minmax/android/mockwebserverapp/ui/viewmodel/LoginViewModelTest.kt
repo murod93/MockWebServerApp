@@ -47,7 +47,6 @@ class LoginViewModelTest{
     lateinit var viewModel: LoginViewModel
 
     @Inject
-    @Named("test_auth_api")
     lateinit var authApi: AuthApi
 
     @Before
