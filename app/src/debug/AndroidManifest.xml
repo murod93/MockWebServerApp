@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.minmax.android.mockwebserverapp">
 
-    <application>
+    <application
+        android:usesCleartextTraffic="true">
         <activity android:name=".HiltTestActivity"
             android:exported="false"/>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

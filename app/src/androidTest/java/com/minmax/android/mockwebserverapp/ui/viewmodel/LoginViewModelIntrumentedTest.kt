@@ -1,5 +1,6 @@
 package com.minmax.android.mockwebserverapp.ui.viewmodel
 
+import android.os.Looper
 import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -60,7 +61,7 @@ class LoginViewModelIntrumentedTest{
     }
 
     @Test
-    fun given_empty_email_and_password_when_login_then_field_is_missing_true(){
+    fun given_empty_email_and_password_when_login_return_field_is_missing(){
         viewModel.login(null, "minmax12#")
         val validationResult = viewModel.validationLiveData.getOrAwaitValue()
         Truth.assertThat(validationResult).isEqualTo(Fields.Email(FormErrors.MISSING_VALUE))
@@ -71,22 +72,21 @@ class LoginViewModelIntrumentedTest{
     }
 
     @Test
-    fun given_email_and_empty_password_when_login_then_field_is_missing_true(){
+    fun given_email_and_empty_password_when_login_return_field_is_missing(){
         viewModel.login("murodjon@test.com", "")
         val result = viewModel.validationLiveData.getOrAwaitValue()
         Truth.assertThat(result).isEqualTo(Fields.Password(FormErrors.MISSING_VALUE))
     }
 
     @Test
-    fun given_invalid_email_and_password_when_login_then_field_is_missing_true(){
+    fun given_invalid_email_and_password_when_login_return_invalid_email(){
         viewModel.login("murodjon", "minmax12#")
         val result = viewModel.validationLiveData.getOrAwaitValue()
         Truth.assertThat(result).isEqualTo(Fields.Email(FormErrors.INVALID_EMAIL))
     }
 
     @Test
-    fun given_valid_email_and_password_when_login_then_response_true(){
-        Log.e("TTT", MockResponseFileReader("login/sample_response.json").content)
+    fun given_valid_email_and_password_when_login_return_response(){
         mockWebServerRule.server.setUpMockServerResponse(200, MockResponseFileReader("login/sample_response.json").content)
 
         viewModel.login("murodjon@test.com", "minmax12#")
@@ -96,7 +96,6 @@ class LoginViewModelIntrumentedTest{
          * You might need a shadowOf(getMainLooper()).idle() call.
          */
         Thread.sleep(1000)
-//        Shadows.shadowOf(Looper.getMainLooper()).idle()
 
         val response = viewModel.loginSuccessLiveData.getOrAwaitValue()
 

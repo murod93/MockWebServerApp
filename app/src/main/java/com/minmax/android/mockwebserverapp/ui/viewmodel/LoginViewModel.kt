@@ -2,6 +2,7 @@ package com.minmax.android.mockwebserverapp.ui.viewmodel
 
 //import kotlinx.coroutines.flow.MutableStateFlow
 //import kotlinx.coroutines.flow.StateFlow
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,10 +33,8 @@ class LoginViewModel @Inject constructor(private val repository: AuthRepository)
     private val _loginSuccessLiveData = MutableLiveData<Unit>()
     private val _networkErrorLiveData = MutableLiveData<Unit>()
     private val _openRegistrationLiveData = MutableLiveData<Unit>()
-//    private val _validationState = MutableStateFlow(listOf<Fields>() as MutableList<Fields>)
     private var job: Job? = null
 
-//    val validationState:StateFlow<List<Fields>> = _validationState
     val validationLiveData: LiveData<Fields> = _validationLiveData
     val showProgressLiveData: LiveData<Boolean> = _showProgressLiveData
     val messageLiveData: LiveData<String> = _messageLiveData
@@ -63,10 +62,17 @@ class LoginViewModel @Inject constructor(private val repository: AuthRepository)
                     .collect {
                         it
                             .onData {
+                                Log.e("TTT", "onData")
                                 _loginSuccessLiveData.postValue(Unit)
                             }
-                            .onMessage { _messageLiveData.postValue(it) }
-                            .onFailure { _networkErrorLiveData.postValue(Unit) }
+                            .onMessage {
+                                Log.e("TTT", "onData")
+                                _messageLiveData.postValue(it)
+                            }
+                            .onFailure {
+                                Log.e("TTT", "onData")
+                                _networkErrorLiveData.postValue(Unit)
+                            }
                         _showProgressLiveData.postValue(false)
                     }
             }

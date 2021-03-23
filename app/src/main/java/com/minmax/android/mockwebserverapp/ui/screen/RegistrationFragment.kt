@@ -3,12 +3,9 @@ package com.minmax.android.mockwebserverapp.ui.screen
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.minmax.android.mockwebserverapp.R
 import com.minmax.android.mockwebserverapp.data.source.remote.model.Fields
 import com.minmax.android.mockwebserverapp.data.source.remote.model.FormErrors
@@ -34,10 +31,10 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
             viewModel.createAccount()
         }
 
-        viewModel.progressLiveData.observe(this, { binding.progressView.isVisible = it })
+        viewModel.progressLiveData.observe(viewLifecycleOwner) { binding.progressView.isVisible = it }
         viewModel.messageLiveData.observe(this, { })
         viewModel.registrationDoneLiveData.observe(this, {})
-        viewModel.validationLiveData.observe(this, {
+        viewModel.validationLiveData.observe(this) {
             when (it) {
                 is Fields.FullName -> {
                     binding.fullnameLayout.error = getString(R.string.required_field)
@@ -67,7 +64,7 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
                     binding.fullnameLayout.error = null
                 }
             }
-        })
+        }
     }
 
     private fun fillOutFields() {
