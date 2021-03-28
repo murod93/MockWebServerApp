@@ -6,7 +6,9 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 
-
+/**
+ * This is helper function to verify TextInputLayout error text
+ */
 fun hasTextInputLayoutErrorText(expectedErrorText: String): Matcher<View?>? {
     return object : TypeSafeMatcher<View?>() {
         override fun matchesSafely(view: View?): Boolean {

@@ -1,7 +1,5 @@
 package com.minmax.android.mockwebserverapp.ui.viewmodel
 
-//import kotlinx.coroutines.flow.MutableStateFlow
-//import kotlinx.coroutines.flow.StateFlow
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

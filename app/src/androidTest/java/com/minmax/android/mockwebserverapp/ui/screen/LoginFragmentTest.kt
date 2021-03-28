@@ -78,4 +78,17 @@ class LoginFragmentTest{
         onView(withId(R.id.password_layout)).check(matches(hasTextInputLayoutErrorText("This field can not be empty!")))
         Thread.sleep(1000)
     }
+
+    @Test
+    fun correct_email_and_correct_password_when_login_return_success(){
+        launchFragmentInHiltContainer<LoginFragment>()
+
+        onView(withId(R.id.input_email_view)).perform(typeText("murodjon@maul.ru"))
+        onView(withId(R.id.input_password_view)).perform(typeText("minmax!90"))
+        onView(withId(R.id.btn_login)).perform(click())
+
+//        onView(withId(R.id.email_layout)).check(matches(hasTextInputLayoutErrorText("Invalid email")))
+//        onView(withId(R.id.password_layout)).check(matches(hasTextInputLayoutErrorText("This field can not be empty!")))
+        Thread.sleep(1000)
+    }
 }
