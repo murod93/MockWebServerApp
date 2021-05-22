@@ -171,9 +171,4 @@ class AuthRepositoryTest {
             m.toList()
         )
     }
-
-    @After
-    fun tearDown() {
-
-    }
 }

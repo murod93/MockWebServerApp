@@ -58,6 +58,7 @@
             android:id="@+id/input_password_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="@string/password"/>
 
     </com.google.android.material.textfield.TextInputLayout>
